@@ -20,7 +20,7 @@ businessRoutes.route('/add',{ automatic405: true }).post(function (req, res) {
 });
 
 // Defined get data(index or listing) route
-businessRoutes.route('/').get(function (req, res) {
+businessRoutes.route('/').get({order_date: '1/17/2019'},function (req, res) {
     Business.find(function (err, businesses){
     if(err){
       console.log(err);
