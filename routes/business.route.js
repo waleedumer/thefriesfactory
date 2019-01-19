@@ -22,7 +22,7 @@ businessRoutes.route('/add',{ automatic405: true }).post(function (req, res) {
 // Defined get data(index or listing) route
 businessRoutes.route('/').get(function (req, res) {
   
-    Business.find({order_date: '19/1/2019'},function (err, businesses){
+    Business.find({order_date: req.query.orderDate},function (err, businesses){
     if(err){
       console.log(err);
     }
