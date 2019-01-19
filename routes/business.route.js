@@ -21,10 +21,8 @@ businessRoutes.route('/add',{ automatic405: true }).post(function (req, res) {
 
 // Defined get data(index or listing) route
 businessRoutes.route('/').get(function (req, res) {
-  var orderDate = date.getDate() + "/"
-                    + (date.getMonth()+1)  + "/" 
-                    + date.getFullYear();
-    Business.find({order_date: orderDate},function (err, businesses){
+  
+    Business.find({order_date: '19/1/2019'},function (err, businesses){
     if(err){
       console.log(err);
     }
