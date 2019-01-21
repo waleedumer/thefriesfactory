@@ -60,6 +60,7 @@ businessRoutes.route('/endSale').get(function (req, res) {
       business.save()
       .then(business => {
         res.status(200).json({'business': 'business in added successfully'});
+        DailySales.remove();
       })
       .catch(err => {
       res.status(400).send("unable to save to database");
