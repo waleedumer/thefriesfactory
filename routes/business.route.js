@@ -50,20 +50,20 @@ businessRoutes.route('/customDate').get(function (req, res) {
 businessRoutes.route('/endSale').get(function (req, res) {
   //{order_date: req.query.orderDate},
   
-  DailySale.find(function (err, businesses){
+  DailySales.find(function (err, businesses){
     if(err){
       console.log(err);
     }
     else {
       res.json(businesses);
-//       let business = new Business(businesses);
-//       business.save()
-//       .then(business => {
-//         res.status(200).json({'business': 'business in added successfully'});
-//       })
-//       .catch(err => {
-//       res.status(400).send("unable to save to database");
-//       });
+      let business = new Business(businesses);
+      business.save()
+      .then(business => {
+        res.status(200).json({'business': 'business in added successfully'});
+      })
+      .catch(err => {
+      res.status(400).send("unable to save to database");
+      });
       console.log(businesses);
     }
   });
