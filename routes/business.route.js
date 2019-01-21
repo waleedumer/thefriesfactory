@@ -32,6 +32,19 @@ businessRoutes.route('/').get(function (req, res) {
   });
 });
 
+//Get Data from date range
+businessRoutes.route('/customDate').get(function (req, res) {
+  //{order_date: req.query.orderDate},
+    Business.find({order_date: {$gte: req.query.dateFrom,$lte: req.query.dateTo}},function (err, businesses){
+    if(err){
+      console.log(err);
+    }
+    else {
+      res.json(businesses);
+    }
+  });
+});
+
 // Defined edit route
 
 
