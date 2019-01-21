@@ -14,6 +14,9 @@ let Orders = new Schema({
   },
   deliveryBy: {
     type: String
+  },
+  items:{
+    type: String
   }
 },{
     collection: 'orders'
