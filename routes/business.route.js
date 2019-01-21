@@ -49,8 +49,8 @@ businessRoutes.route('/customDate').get(function (req, res) {
 //End today's Sale
 businessRoutes.route('/endSale').get(function (req, res) {
   //{order_date: req.query.orderDate},
-  let business = new Business(DailySale.find().toArray());
-  business.save()
+  let business = new Business();
+  business.save(DailySale.find().toArray())
     .then(business => {
       DailySale.remove();
       res.status(200).json({'business': 'business in added successfully'});
