@@ -49,14 +49,16 @@ businessRoutes.route('/customDate').get(function (req, res) {
 //End today's Sale
 businessRoutes.route('/endSale').get(function (req, res) {
   //{order_date: req.query.orderDate},
-    Business.find({order_date: {$gte: req.query.dateFrom,$lte: req.query.dateTo}},function (err, businesses){
-    if(err){
-      console.log(err);
-    }
-    else {
-      res.json(businesses);
-    }
-  });
+  let business = new Business(DailySale.find().toArray());
+  business.save()
+    .then(business => {
+      DailySale.remove();
+      res.status(200).json({'business': 'business in added successfully'});
+    })
+    .catch(err => {
+    res.status(400).send("unable to save to database");
+    });
+    
 });
 
 // Defined edit route
