@@ -4,12 +4,13 @@ const businessRoutes = express.Router({ automatic405: true });
 
 // Require Business model in our routes module
 let Business = require('../models/Orders');
+let DailySales = require('../models/DailySales');
 
   
 // Defined store route
 businessRoutes.route('/add',{ automatic405: true }).post(function (req, res) {
     console.log(req.body);
-  let business = new Business(req.body);
+  let business = new DailySales(req.body);
   business.save()
     .then(business => {
       res.status(200).json({'business': 'business in added successfully'});
