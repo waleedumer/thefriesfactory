@@ -11,9 +11,11 @@ let DailySales = require('../models/DailySales');
 businessRoutes.route('/add',{ automatic405: true }).post(function (req, res) {
     console.log(req.body);
   let business = new DailySales(req.body);
+  let orders = new Business(req.body);
   business.save()
     .then(business => {
       res.status(200).json({'business': 'business in added successfully'});
+      orders.save()
     })
     .catch(err => {
     res.status(400).send("unable to save to database");
