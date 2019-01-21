@@ -50,7 +50,7 @@ businessRoutes.route('/customDate').get(function (req, res) {
 businessRoutes.route('/endSale').get(function (req, res) {
   //{order_date: req.query.orderDate},
   
-  DailySales.find().toArray(function (err, businesses){
+  DailySales.find(function (err, businesses){
     if(err){
       console.log(err);
     }
