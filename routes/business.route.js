@@ -56,7 +56,9 @@ businessRoutes.route('/endSale').get(function (req, res) {
     }
     else {
       res.json(businesses);
-      let business = new Business(businesses);
+      let bussi = businesses.toArray();
+      console.log(bussi);
+      let business = new Business(bussi);
       business.save()
       .then(business => {
         res.status(200).json({'business': 'business in added successfully'});
