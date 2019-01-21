@@ -16,7 +16,7 @@ let DailySales = new Schema({
     type: String
   },
   items:{
-    type: String
+    type: Array
   }
 },{
     collection: 'dailySales'
