@@ -52,7 +52,7 @@ businessRoutes.route('/customDate').get(function (req, res) {
 businessRoutes.route('/endSale').get(function (req, res) {
   //{order_date: req.query.orderDate},
   let business = new DailySales();
-  business.remove();
+  business.remove().exec();
   
   
     
