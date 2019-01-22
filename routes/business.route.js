@@ -50,6 +50,17 @@ businessRoutes.route('/customDate').get(function (req, res) {
 
 //End today's Sale
 businessRoutes.route('/endSale').get(function (req, res) {
+  DailySales.find(function(err, sales){
+    if(err){
+      console.log(err)
+    }
+    else{
+      res.json(sales)
+    }
+  })
+});
+
+businessRoutes.route('/vanishSale').get(function (req, res) {
   //{order_date: req.query.orderDate},
   let business = new DailySales();
   business.collection.drop().then(business => {
@@ -58,10 +69,7 @@ businessRoutes.route('/endSale').get(function (req, res) {
     })
     .catch(err => {
     res.status(400).send("unable to save to database");
-    });
-  
-  
-    
+    });   
 });
 
 businessRoutes.route('/deleteOrder').get(function (req, res) {
