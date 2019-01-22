@@ -53,7 +53,7 @@ businessRoutes.route('/endSale').get(function (req, res) {
   //{order_date: req.query.orderDate},
   let business = new DailySales();
   business.collection.drop().then(business => {
-      res.status(200).json({'business': 'business in added successfully'});
+      res.status(200).json('Sale is Ended.');
 //       orders.save()
     })
     .catch(err => {
