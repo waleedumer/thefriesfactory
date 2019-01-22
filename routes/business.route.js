@@ -66,8 +66,7 @@ businessRoutes.route('/endSale').get(function (req, res) {
 
 businessRoutes.route('/deleteOrder').get(function (req, res) {
   //{order_date: req.query.orderDate},
-  let business = new Business();
-  business.findByIdAndRemove({ _id: req.query.orderId }, function (err, business) {
+  Business.findByIdAndRemove({ _id: req.query.orderId }, function (err, business) {
       if (err) return handleError(err);
       else res.json('Successfully removed');
       // deleted at most one tank document
