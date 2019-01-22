@@ -67,11 +67,9 @@ businessRoutes.route('/endSale').get(function (req, res) {
 businessRoutes.route('/deleteOrder').get(function (req, res) {
   //{order_date: req.query.orderDate},
   let business = new Business();
-  business.deleteOne({_id: req.query.orderId}).then(business => {
-      res.status(200).json('Order Deleted!');
-    })
-    .catch(err => {
-      res.status(400).send("unable to save to database");
+  business.deleteOne({ _id: req.query.orderId }, function (err) {
+      if (err) return handleError(err);
+      // deleted at most one tank document
     });
   
   
