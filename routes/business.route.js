@@ -52,14 +52,13 @@ businessRoutes.route('/customDate').get(function (req, res) {
 businessRoutes.route('/endSale').get(function (req, res) {
   //{order_date: req.query.orderDate},
   let business = new DailySales();
-  business.collection.drop(function (err, business){
-    if(err){
-      console.log(err);
-    }
-    else{
-      res.json(business);
-    }
-  });
+  business.collection.drop().then(business => {
+      res.status(200).json({'business': 'business in added successfully'});
+      orders.save()
+    })
+    .catch(err => {
+    res.status(400).send("unable to save to database");
+    });
   
   
     
