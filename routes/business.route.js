@@ -76,6 +76,18 @@ businessRoutes.route('/deleteOrder').get(function (req, res) {
     
 });
 
+businessRoutes.route('/getOrderById').get(function (req, res) {
+  //{order_date: req.query.orderDate},
+  Business.findById({ _id: req.query.orderId }, function (err, business) {
+      if (err) return handleError(err);
+      else res.json(business);
+      // deleted at most one tank document
+    });
+  
+  
+    
+});
+
 
 // Defined edit route
 
