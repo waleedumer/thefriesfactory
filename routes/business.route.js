@@ -54,7 +54,7 @@ businessRoutes.route('/endSale').get(function (req, res) {
   let business = new DailySales();
   business.collection.drop().then(business => {
       res.status(200).json({'business': 'business in added successfully'});
-      orders.save()
+//       orders.save()
     })
     .catch(err => {
     res.status(400).send("unable to save to database");
@@ -63,6 +63,21 @@ businessRoutes.route('/endSale').get(function (req, res) {
   
     
 });
+
+businessRoutes.route('/deleteOrder').get(function (req, res) {
+  //{order_date: req.query.orderDate},
+  let business = new Business();
+  business.deleteOne({_id: req.query.orderId}).then(business => {
+      res.status(200).json('Order Deleted!');
+    })
+    .catch(err => {
+      res.status(400).send("unable to save to database");
+    });
+  
+  
+    
+});
+
 
 // Defined edit route
 
