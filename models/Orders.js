@@ -9,6 +9,9 @@ let Orders = new Schema({
   order_date: {
     type: String
   },
+  order_time: {
+    type: String
+  },
   orderId: {
     type: Number
   },
