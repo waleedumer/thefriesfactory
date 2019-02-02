@@ -35,6 +35,18 @@ businessRoutes.route('/').get(function (req, res) {
   });
 });
 
+businessRoutes.route('/dailySale').get(function (req, res) {
+  //{order_date: req.query.orderDate},
+    DailySales.find().sort({order_date: -1}).exec(function (err, businesses){
+    if(err){
+      console.log(err);
+    }
+    else {
+      res.json(businesses);
+    }
+  });
+});
+
 //Get Data from date range
 businessRoutes.route('/customDate').get(function (req, res) {
   //{order_date: req.query.orderDate},
