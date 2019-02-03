@@ -5,6 +5,7 @@ const businessRoutes = express.Router({ automatic405: true });
 // Require Business model in our routes module
 let Business = require('../models/Orders');
 let DailySales = require('../models/DailySales');
+let Items = require('../models/Items');
 
   
 // Defined store route
@@ -38,6 +39,18 @@ businessRoutes.route('/').get(function (req, res) {
 businessRoutes.route('/dailySale').get(function (req, res) {
   //{order_date: req.query.orderDate},
     DailySales.find().sort({order_date: -1}).exec(function (err, businesses){
+    if(err){
+      console.log(err);
+    }
+    else {
+      res.json(businesses);
+    }
+  });
+});
+
+businessRoutes.route('/items').get(function (req, res) {
+  //{order_date: req.query.orderDate},
+    Items.find(function (err, businesses){
     if(err){
       console.log(err);
     }
