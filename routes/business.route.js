@@ -60,6 +60,18 @@ businessRoutes.route('/items').get(function (req, res) {
   });
 });
 
+businessRoutes.route('/getItemById').get(function (req, res) {
+  //{order_date: req.query.orderDate},
+  Items.findById({ _id: req.query.itemId }, function (err, business) {
+      if (err) return handleError(err);
+      else res.json(business);
+      // deleted at most one tank document
+    });
+  
+  
+    
+});
+
 //Get Data from date range
 businessRoutes.route('/customDate').get(function (req, res) {
   //{order_date: req.query.orderDate},
