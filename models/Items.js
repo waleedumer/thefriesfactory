@@ -3,9 +3,6 @@ const Schema = mongoose.Schema;
 
 // Define collection and schema for Business
 let Items = new Schema({
-  _id: {
-    type: String
-  },
   itemId: {
     type: String
   },
