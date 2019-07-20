@@ -23,6 +23,18 @@ businessRoutes.route('/add',{ automatic405: true }).post(function (req, res) {
     });
 });
 
+businessRoutes.route('/end').get(function (req, res) {
+  //{order_date: req.query.orderDate},
+    DailySales.findOne().sort({order_time: -1}).exec(function (err, businesses){
+    if(err){
+      console.log(err);
+    }
+    else {
+      res.json(businesses);
+    }
+  });
+});
+
 // Defined get data(index or listing) route
 businessRoutes.route('/').get(function (req, res) {
   //{order_date: req.query.orderDate},
@@ -32,6 +44,19 @@ businessRoutes.route('/').get(function (req, res) {
     }
     else {
       res.json(businesses);
+    }
+  });
+});
+
+businessRoutes.route('/ordercount').get(function (req, res) {
+  //{order_date: req.query.orderDate},
+    Business.find({order_date: req.query.orderDate}).count().exec(function (err, businesses){
+    if(err){
+      console.log(err);
+    }
+    else {
+      res.json(businesses);
+      console.log(businesses);
     }
   });
 });
